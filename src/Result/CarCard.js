@@ -7,7 +7,15 @@ import IconPeople from "../Assets/fi_users.svg"
 import IconGear from "../Assets/fi_settings.svg"
 import IconCalendar from "../Assets/fi_calendar.svg"
 
+import { useSelector, useDispatch } from "react-redux";
+import carCartSlice from '../store/carCartSlice';
+
 const CarCard = (props) => {
+
+  const carCartSlice = useSelector( (store) => store.carCartSlice.CarCart);
+  const dispatch = useDispatch();
+
+  
   return (
     <div className='car_card'>
       <div className='car-image-container'>
@@ -28,7 +36,7 @@ const CarCard = (props) => {
             <img src={IconPeople} className='car-icon'/>
           </div>
           <div className='car-detail-text'>
-            4 orang (ganti dari API)
+            {props.car.passenger}
           </div>
         </div>
         <div className='car-detail-icons'>
@@ -36,7 +44,7 @@ const CarCard = (props) => {
             <img src={IconGear} className='car-icon'/>
           </div>
           <div className='car-detail-text'>
-            Manual (ganti dari API)
+            {props.car.transmission}
           </div>
         </div>
         <div className='car-detail-icons'>
@@ -44,12 +52,12 @@ const CarCard = (props) => {
             <img src={IconCalendar} className='car-icon'/>
           </div>
           <div className='car-detail-text'>
-            Tahun 2020 (ganti dari API)
+            {props.car.year}
           </div>
         </div>
-        <button className='button-card-container'>
+        <button className='button-card-container' disabled={carCartSlice === props.car.id}>
           <div type="submit" className='button-card'>
-              Pilih Mobil
+              {carCartSlice === props.car.id ? "Lanjutkan Pembayaran" : "Pilih Mobil"} 
           </div>
         </button>
       </div>
