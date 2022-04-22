@@ -36,7 +36,7 @@ const CarCard = (props) => {
             <img src={IconPeople} className='car-icon'/>
           </div>
           <div className='car-detail-text'>
-            {props.car.passenger}
+            {props.car.passenger} orang
           </div>
         </div>
         <div className='car-detail-icons'>
@@ -55,7 +55,7 @@ const CarCard = (props) => {
             {props.car.year}
           </div>
         </div>
-        <button className='button-card-container' disabled={carCartSlice === props.car.id}>
+        <button className='button-card-container'>
           <div type="submit" className='button-card'>
               {carCartSlice === props.car.id ? "Lanjutkan Pembayaran" : "Pilih Mobil"} 
           </div>
